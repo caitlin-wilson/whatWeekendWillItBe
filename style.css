@@ -1,0 +1,31 @@
+body {
+	background-color: palegreen;
+	font-size: 100%;
+}
+.container {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	align-items: center;
+}
+
+h1 {
+	font-family: impact, fantasy;
+	font-size: 8vw;
+	color: black;
+	margin: 10px;
+}
+
+p {
+	font-family: arial, serif;
+	font-size: 2vw;
+	color: darkSlateGrey;
+	margin: 50px 20px 50px 20px;
+}
+
+input, select {
+	font-family: arial, serif;
+	height: 30px;
+}
+
+
