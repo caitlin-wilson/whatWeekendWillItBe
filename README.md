@@ -15,7 +15,3 @@ Author:
 Caitlin Wilson
 Librarian Assistant - Reference Department
 New Bern-Craven County Public Library
-
-1573241623873
-
-1573241699450

@@ -1,64 +1,46 @@
-'use strict';
-let week = " ";
-// Find out what week it is based on date, or input
-function findWeek(date){
-	// Establish the first A week in milliseconds (last A week of 2018)
-	const firstADate = new Date("Dec 9, 2018 00:00:00");
-	const firstAMil = firstADate.getTime();
-	const milPerWeek  = 7 * 24 * 60 * 60 * 1000;
+// Establish A week
+const aWeekDate = new Date("Oct 20, 2019 00:00:00");
+const aWeekCounter = aWeekDate.getTime();
 
-	// Find difference between 1st A week and input in # of weeks
-	let milDifference = date - firstAMil;
-	let weeksDifference = milDifference / milPerWeek;
+// Find number of milliseconds in a day.
+const dayMilliseconds = 24 * 60 * 60* 1000;
 
-	// Subtract from remainder until the remainder is 1, 2, or 3
-	while (weeksDifference > 3) {
-		weeksDifference -= 3;
-	}
+// Find current week.
+let today = new Date();
+let todayMilSec = today.getTime();
+let todayDif = todayMilSec - aWeekCounter;
+let todayWeeks = todayDif / dayMilliseconds / 7;
+let initialText = document.getElementById("result");
 
-	// Determine week based on remainder
-	if (weeksDifference < 1) {
-		week = "a";
-	} else if (weeksDifference < 2) {
-		week = "b";
-	} else if (weeksDifference < 3) {
-		week = "c";
-	}
-}	
-
-// Find current week for intial text on page
-function currentWeek() {
-
-	// Establish today's date in milliseconds
-	let todayDate = new Date();
-	let todayMil = todayDate.getTime();
-
-	// Establish initial text
+function findCurrentWeek() {
+	// Find current week.
+	let today = new Date();
+	let todayMilSec = today.getTime();
+	let todayDif = todayMilSec - aWeekCounter;
+	let todayWeeks = todayDif / dayMilliseconds / 7;
 	let initialText = document.getElementById("result");
-	
-	// Run findWeek with today's date	
-	findWeek(todayMil);
 
-	// Change initial text depending on letter
-	if (week = "a") {
-		initialText.innerHTML =
+	while (todayWeeks > 3) {
+		todayWeeks -= 3;
+	}
+
+	// Using the remainder to determine the week.
+	if (todayWeeks < 1) {
+		initialText.innerHTML=
 		("We're currently headed into A Weekend.")
-	} else if (week = "b") {
-		initialText.innerHTML =
+	} else if (todayWeeks < 2) {
+		initialText.innerHTML=
 		("We're currently headed into B Weekend.")
-	} else if (week = "c") {
-		initialText.innerHTML =
+	} else if (todayWeeks < 3) {
+		initialText.innerHTML=
 		("We're currently headed into C Weekend.")
 	} 
 }	
-currentWeek();
+findCurrentWeek();
 
-// Find week based on user input
-function userWeek(){
-	// Establish initial text
-	let initialText = document.getElementById("result");
-	
-	// Grab user date input
+// Find user's week.
+function whatWeek() {
+	// grab user date input
 	let selMonth = document.getElementById("monthSelect");
 	let month = selMonth.value;
 	let selDay = document.getElementById("daySelect");
@@ -69,18 +51,30 @@ function userWeek(){
 	let formatDate = new Date(wholeDate);
 	let inputDateCounter = formatDate.getTime();
 
-	// Run findWeek with the input date
-	findWeek(inputDateCounter);
+	// Find the difference in milliseconds.
+	let difference = inputDateCounter - aWeekCounter;
 
-	// Change text depending on the week's letter
-	if (week = "a") {
-		initialText.innerHTML =
-		("We will be headed into A Weekend.")
-	} else if (week = "b") {
-		initialText.innerHTML =
-		("We will be headed into B Weekend.")
-	} else if (week = "c") {
-		initialText.innerHTML =
-		("We will be headed into C Weekend.")
-	} 
-} 
+	// Find difference in days then weeks.
+	let numberOfWeeks = difference / dayMilliseconds / 7;
+
+	// Divide weeks 3 until you can't anymore.
+	function findTheRemainder() {
+		while (numberOfWeeks > 3) {
+			numberOfWeeks -= 3;
+		}
+		console.log(numberOfWeeks);
+		// Using the remainder to determine the week.
+		if (numberOfWeeks < 1) {
+			result =
+			("We will be headed into an A weekend.")
+		} else if (numberOfWeeks < 2) {
+			result =
+			("We will be headed into a B weekend.")
+		} else if (numberOfWeeks < 3) {
+			result =
+			("We will be headed into a C weekend.")
+		}
+		document.getElementById("result").innerHTML = result; 
+	}	
+	findTheRemainder();
+}
