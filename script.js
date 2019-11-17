@@ -1,5 +1,5 @@
 // Establish A week
-const aWeekDate = new Date("Dec 30, 2018 00:00:00");
+const aWeekDate = new Date("Dec 31, 2018 00:00:00");
 const aWeekCounter = aWeekDate.getTime();
 
 // Find number of milliseconds in a day
@@ -26,7 +26,7 @@ function findCurrentWeek() {
 	// Use the remainder to determine the week
 	// If the day is Sat, or Sun use current tense
 	if (todayWeeks < 1) {
-			if (dow >= 6 ) {
+			if (dow === 0 || dow === 6) {
 				initialText.innerHTML =
 				("It is currently an A Weekend.")
 			} else {
@@ -34,7 +34,7 @@ function findCurrentWeek() {
 				("We're currently headed into A Weekend.")
 			}
 	} else if (todayWeeks < 2) {
-			if (dow >= 6 ) {
+			if (dow === 0 || dow === 6) {
 				initialText.innerHTML =
 				("It is currently a B Weekend.")
 			} else {
@@ -42,7 +42,7 @@ function findCurrentWeek() {
 				("We're currently headed into B Weekend.")
 			}
 	} else if (todayWeeks < 3) {
-			if (dow >= 6 ) {
+			if (dow === 0 || dow === 6) {
 				initialText.innerHTML =
 				("It is currently a C Weekend.")
 			} else {
@@ -84,22 +84,22 @@ function whatWeek() {
 		// Using the remainder to determine the week
 		// If it's a Sat, or Sun different tense
 		if (numberOfWeeks < 1) {
-			if (dow >= 6) {
+			if (dow === 0 || dow === 6) {
 				result = ("It will be an A weekend.")
 			} else {
-				result =("We will be headed into an A weekend.")
+				result = ("We will be headed into an A weekend.")
 			}
 		} else if (numberOfWeeks < 2) {
-			if (dow >= 6) {
+			if (dow === 0 || dow === 6) {
 				result = ("It will be a B weekend.")
 			} else {
-				result =("We will be headed into a B weekend.")
+				result = ("We will be headed into a B weekend.")
 			}
 		} else if (numberOfWeeks < 3) {
-			if (dow >= 6) {
+			if (dow === 0 || dow === 6) {
 				result = ("It will be a C weekend.")
 			} else {
-				result =("We will be headed into a C weekend.")
+				result = ("We will be headed into a C weekend.")
 			}
 		}
 		document.getElementById("result").innerHTML = result; 
