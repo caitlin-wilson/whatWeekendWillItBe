@@ -1,3 +1,5 @@
+'use strict'
+
 // Establish A week
 const aWeekDate = new Date("Dec 31, 2018 00:00:00");
 const aWeekCounter = aWeekDate.getTime();
@@ -75,6 +77,9 @@ function whatWeek() {
 	// Find input day of the week
 	let dow = formatDate.getDay();
 
+	// Establish that will change.
+	let initialText = document.getElementById("result");
+
 	// Divide weeks 3 until remainder <3
 	function findTheRemainder() {
 		while (numberOfWeeks > 3) {
@@ -85,24 +90,29 @@ function whatWeek() {
 		// If it's a Sat, or Sun different tense
 		if (numberOfWeeks < 1) {
 			if (dow === 0 || dow === 6) {
-				result = ("It will be an A weekend.")
+				initialText.innerHTML = 
+				("It will be an A weekend.")
 			} else {
-				result = ("We will be headed into an A weekend.")
+				initialText.innerHTML =
+				("We will be headed into an A weekend.")
 			}
 		} else if (numberOfWeeks < 2) {
 			if (dow === 0 || dow === 6) {
-				result = ("It will be a B weekend.")
+				initialText.innerHTML = 
+				("It will be a B weekend.")
 			} else {
-				result = ("We will be headed into a B weekend.")
+				initialText.innerHTML =
+				("We will be headed into a B weekend.")
 			}
 		} else if (numberOfWeeks < 3) {
 			if (dow === 0 || dow === 6) {
-				result = ("It will be a C weekend.")
+				initialText.innerHTML =
+				("It will be a C weekend.")
 			} else {
-				result = ("We will be headed into a C weekend.")
+				initialText.innerHTML =
+				("We will be headed into a C weekend.")
 			}
 		}
-		document.getElementById("result").innerHTML = result; 
 	}	
 	findTheRemainder();
 }
