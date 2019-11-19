@@ -1,5 +1,4 @@
 'use strict'
-
 // Establish A week
 const aWeekDate = new Date("Dec 31, 2018 00:00:00");
 const aWeekCounter = aWeekDate.getTime();
@@ -7,13 +6,13 @@ const aWeekCounter = aWeekDate.getTime();
 // Find number of milliseconds in a day
 const dayMilliseconds = 24 * 60 * 60* 1000;
 
+// Find current week.
+let today = new Date();
+let todayMilSec = today.getTime();
+let todayDif = todayMilSec - aWeekCounter;
+let todayWeeks = todayDif / dayMilliseconds / 7;
+
 function findCurrentWeek() {
-	// Find current week.
-	let today = new Date();
-	let todayMilSec = today.getTime();
-	let todayDif = todayMilSec - aWeekCounter;
-	let todayWeeks = todayDif / dayMilliseconds / 7;
-	
 	// Establish that will change.
 	let initialText = document.getElementById("result");
 
@@ -57,7 +56,7 @@ findCurrentWeek();
 
 // Find user's week
 function whatWeek() {
-	// grab user date input
+	// Grab user date input
 	let selMonth = document.getElementById("monthSelect");
 	let month = selMonth.value;
 	let selDay = document.getElementById("daySelect");
@@ -113,6 +112,11 @@ function whatWeek() {
 				("We will be headed into a C weekend.")
 			}
 		}
-	}	
+	}
+// Respond to past date inputs
+if (inputDateCounter < todayMilSec) {
+	initialText.innerHTML = ("Never look back!");
+} else {
 	findTheRemainder();
+}
 }
