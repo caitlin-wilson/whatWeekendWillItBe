@@ -1,33 +1,8 @@
 body {
-	background-color: red;
-	font-size: 100%;
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
 }
+
 .container {
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-	align-items: center;
+	background-image: url("backgroundImage.jpg");
 }
-
-h1 {
-	font-family: Roboto Condensed, sans-serif;
-	font-size: 8vw;
-	color: black;
-	margin: 10px;
-	text-align: center;
-}
-
-p {
-	font-family: arial, serif;
-	font-size: 2vw;
-	color: darkSlateGrey;
-	margin: 50px 20px 50px 20px;
-	text-align: center;
-}
-
-input, select {
-	font-family: arial, serif;
-	height: 30px;
-}
-
-
