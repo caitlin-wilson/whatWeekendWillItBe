@@ -7,7 +7,7 @@ You can enter in any date after October 20, 2019 and it will give you an accurat
 
 URL:
 
-There is no working URL for this app.  It must be accessed via the desktop at this time.
+https://nbccpl.github.io/weekendApp/
 
 
 Author:
